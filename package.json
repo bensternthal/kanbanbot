@@ -1,0 +1,17 @@
+{
+  "name": "kanbanbot",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">= 0.6.5",
+    "npm": "1.1.x"
+  },  
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "irc": "*",
+    "nconf": "*",
+    "request": "2.9.153"
+  }
+}
