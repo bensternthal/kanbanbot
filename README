@@ -1,14 +1,5 @@
-WebRTC Text To Speach
+Kanbanbot
 ===
 
 Not ready for anyone yet.
 
-# Front End
-* JS that streams audio to backend
-* JS that displays streamed text
-
-# Back End
-* Receiver of audio
-* Some type of transcription
-** ideally just unix
-* Streamer of text back to browser
