@@ -1,0 +1,21 @@
+doctype 5
+html
+  head
+    title= title
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js');
+    script(type='text/javascript')      
+        $(function () {
+          $('#test').click(function () {
+            $.ajax({
+              url: '/liveurl',
+              type: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ user_id: '33230', auth_token: 'c6e23a4f46d7c52c77dee8d2c28c452fc780b7ff', 'resource[id]': '967294', 'resource[created_at]': '2013-05-13T17:11:13+00:00', 'resource[updated_at]': '2013-05-17T19:52:23+00:00', 'resource[weight]': '-2750000.0', 'resource[title]': 'Flicks', 'resource[description]': 'Matej -> Copy\nCreate kanban cards for design ux and dev\nSchedule\n- UX/Design 1/2 week of june\n- Dev july', 'resource[task_type_id]': '183034', 'resource[estimate_id]': '226817', 'resource[column_id]': '227514', 'resource[creator_id]': '33230', 'resource[owner_id]': '33230', 'resource[priority]': '0', 'resource[ready_to_pull]': 'false', 'resource[moved_at]': '2013-05-17T19:52:23+00:00', 'resource[blocked]': 'false', 'resource[type]': 'Task', 'resource[global_in_context_url]': 'https://kanbanery.com/tasks/967294/in-context?project_id=33582', 'resource[position]': '3' }), 
+              dataType: 'json'});
+          });
+        });      
+  body
+    h1 Test Submission
+    h2#test clickme!
+
+  
