@@ -16,7 +16,7 @@ exports.index = function(req, res){
         res.end('kanban!');   
 
         // Get Column Information  & Post To IRC          
-        kanbanery.get(req.body['resource[column_id]'], 'columns', nconf, function(err, response) {
+        kanbanery.get(req.body.resource.column_id, 'columns', nconf, function(err, response) {
           if (err || !response) {
             console.log('something shitty:' + err);
           } else {

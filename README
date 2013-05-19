@@ -3,28 +3,3 @@ Kanbanbot
 
 Not ready for anyone yet.
 
-Example Kanban PUT
-
-{ user_id: '33230',
-  auth_token: 'c6e23a4f46d7c52c77dee8d2c28c452fc780b7ff',
-  'resource[id]': '967294',
-  'resource[created_at]': '2013-05-13T17:11:13+00:00',
-  'resource[updated_at]': '2013-05-17T19:52:23+00:00',
-  'resource[weight]': '-2750000.0',
-  'resource[title]': 'Flicks',
-  'resource[description]': 'Matej -> Copy\nCreate kanban cards for design ux and dev\nSchedule\n- UX/Design 1/2 week of june\n- Dev july',
-  'resource[task_type_id]': '183034',
-  'resource[estimate_id]': '226817',
-  'resource[column_id]': '227514',
-  'resource[creator_id]': '33230',
-  'resource[owner_id]': '33230',
-  'resource[priority]': '0',
-  'resource[ready_to_pull]': 'false',
-  'resource[moved_at]': '2013-05-17T19:52:23+00:00',
-  'resource[blocked]': 'false',
-  'resource[type]': 'Task',
-  'resource[global_in_context_url]': 'https://kanbanery.com/tasks/967294/in-context?project_id=33582',
-  'resource[position]': '3' }
-
-
- %7B+user_id%3A+%2733230%27%2C%0D%0A++auth_token%3A+%27c6e23a4f46d7c52c77dee8d2c28c452fc780b7ff%27%2C%0D%0A++%27resource%5Bid%5D%27%3A+%27967294%27%2C%0D%0A++%27resource%5Bcreated_at%5D%27%3A+%272013-05-13T17%3A11%3A13%2B00%3A00%27%2C%0D%0A++%27resource%5Bupdated_at%5D%27%3A+%272013-05-17T19%3A52%3A23%2B00%3A00%27%2C%0D%0A++%27resource%5Bweight%5D%27%3A+%27-2750000.0%27%2C%0D%0A++%27resource%5Btitle%5D%27%3A+%27Flicks%27%2C%0D%0A++%27resource%5Bdescription%5D%27%3A+%27Matej+-%3E+Copy%5CnCreate+kanban+cards+for+design+ux+and+dev%5CnSchedule%5Cn-+UX%2FDesign+1%2F2+week+of+june%5Cn-+Dev+july%27%2C%0D%0A++%27resource%5Btask_type_id%5D%27%3A+%27183034%27%2C%0D%0A++%27resource%5Bestimate_id%5D%27%3A+%27226817%27%2C%0D%0A++%27resource%5Bcolumn_id%5D%27%3A+%27227514%27%2C%0D%0A++%27resource%5Bcreator_id%5D%27%3A+%2733230%27%2C%0D%0A++%27resource%5Bowner_id%5D%27%3A+%2733230%27%2C%0D%0A++%27resource%5Bpriority%5D%27%3A+%270%27%2C%0D%0A++%27resource%5Bready_to_pull%5D%27%3A+%27false%27%2C%0D%0A++%27resource%5Bmoved_at%5D%27%3A+%272013-05-17T19%3A52%3A23%2B00%3A00%27%2C%0D%0A++%27resource%5Bblocked%5D%27%3A+%27false%27%2C%0D%0A++%27resource%5Btype%5D%27%3A+%27Task%27%2C%0D%0A++%27resource%5Bglobal_in_context_url%5D%27%3A+%27https%3A%2F%2Fkanbanery.com%2Ftasks%2F967294%2Fin-context%3Fproject_id%3D33582%27%2C%0D%0A++%27resource%5Bposition%5D%27%3A+%273%27+%7D
