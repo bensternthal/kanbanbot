@@ -6,15 +6,15 @@ var nconf = require('nconf');
 var express = require('express')
     , routes = require('./routes')
     , liveURL = require('./routes/liveurl'); 
+var app = express();
 
 var path = require('path');
 var ircUtils = require('./lib/irc');
-var app = express();
 
 // Settings
 nconf.argv().env().file({ file: 'local.json' });
 
-// Using Express For Form Test & Routing Cause It's Easier
+// Using Express For Now Cause It's Easier
 app.configure(function(){
     app.set('port', process.env.PORT || 8000);
     app.set('views', __dirname + '/views');
@@ -30,9 +30,13 @@ app.configure(function(){
 
 app.use(express.errorHandler());    
 
-// Routes!
+// Routes
 app.get('/', routes.index);
 app.put('/liveurl', liveURL.index);
+
+// Not Implemented Yet
+app.post('/liveurl', liveURL.notImplemented);
+app.delete('/liveurl', liveURL.notImplemented);
 
 var server = app.listen(8000);
 
@@ -40,6 +44,9 @@ var server = app.listen(8000);
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+// Start IRC Bot
+ircUtils.startClient(nconf);
 
 
 

@@ -1,0 +1,17 @@
+{
+    "irc": {
+        "server": "",
+        "botName": "",
+        "config" : {
+            "channels": [""],
+            "userName": "",
+            "realName": "",
+            "port": ,    
+            "secure":   
+        }      
+    },
+    "kanbanery_api_token": "",
+    "kanbanery_auth_token": "",
+    "kanbanery_url": ""
+}
+
