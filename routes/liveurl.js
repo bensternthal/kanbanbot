@@ -9,11 +9,11 @@ exports.index = function(req, res){
     //this is a messy conrtoller.. refactor out each function
     kanbanery.auth(req, nconf, function(err, valid) {
       if (err || !valid) {
-        res.writeHead(500, {"Content-Type": "text/plain"});
+        res.writeHead(500, {'Content-Type': 'text/plain'});
         res.end(err); 
       } else {
         // Send response & process in background
-        res.writeHead(200, {"Content-Type": "text/plain"});
+        res.writeHead(200, {'Content-Type': 'text/plain'});
         res.end('kanban!'); 
 
         // Get Column Information  & Post To IRC          
@@ -47,7 +47,7 @@ exports.index = function(req, res){
 // We need to return 200 even for calls we do not use. 
 // Kanbanery will eventually disable the live url if you return 404
 exports.notImplemented = function(req, res){
-  res.writeHead(200, {"Content-Type": "text/plain"});
+  res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Not Implemented'); 
 };
 
