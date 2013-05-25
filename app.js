@@ -38,10 +38,8 @@ app.put('/liveurl', liveURL.index);
 app.post('/liveurl', liveURL.notImplemented);
 app.delete('/liveurl', liveURL.notImplemented);
 
-var server = app.listen(8000);
-
 // Start WebServer
-server.listen(app.get('port'), function(){
+app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
