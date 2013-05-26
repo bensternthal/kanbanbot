@@ -1,55 +1,75 @@
 var kanbanery = require('../lib/kanbanery');
 var ircUtils = require('../lib/irc');
-var nconf = require('nconf');
-nconf.argv().env().file({ file: 'local.json' });
+var async = require('async');
 
-exports.index = function(req, res){
-    
-    // Authenticate Request
-    //this is a messy conrtoller.. refactor out each function
-    kanbanery.auth(req, nconf, function(err, valid) {
-      if (err || !valid) {
-        res.writeHead(500, {'Content-Type': 'text/plain'});
-        res.end(err); 
-      } else {
-        // Send response & process in background
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('kanban!'); 
+module.exports = function(nconf, app) {
 
-        // Get Column Information  & Post To IRC          
+  app.put('/liveurl', function(req, res) {
+    var wip;
+    var columnName;
+
+    async.series([
+      function(callback) {
+        // Authenticate
+        kanbanery.auth(req, nconf, function(err, valid) {
+          if (err || !valid) return callback(err);
+          // Send response & process in background
+          res.writeHead(200, {'Content-Type': 'text/plain'});
+          res.end('kanban!');           
+          callback();
+        });
+      },
+      function(callback) {
+        // Get Column Information  & Post To IRC   
         kanbanery.get(req.body.resource.column_id, 'columns', nconf, function(err, response) {
           if (err || !response) {
             console.log('Error fetching column info via API:' + err);
-          } else {
-            ircUtils.cardMoved(req, response);
-            var wip = response.capacity;
-            var columnName = response.name;
-
-            // calculate wip limit and alert
-            kanbanery.getCardCount(req.body.resource.column_id, nconf, function(err,response){
-              if (err || !response) {
-                console.log('Error fetching WIP' + err);
-              } else {
-                if(response.length > wip ) {
-                  //todo handle null
-                  ircUtils.WIPExceeded(response.length, wip, columnName);
-                }
-              }
-
-            });
+            return callback(err);
           }
-        });       
+
+          wip = response.capacity;
+          columnName = response.name;
+          
+          ircUtils.cardMoved(req, response);
+          callback();
+        });
+      },
+      function(callback) {  
+        kanbanery.getCardCount(req.body.resource.column_id, nconf, function(err,response) {
+          if (err || !response) {
+            console.log('Error fetching WIP' + err);
+            return callback(err);
+          }
+
+          if(response.length > wip ) {
+            //todo handle null
+            ircUtils.WIPExceeded(response.length, wip, columnName);
+          }
+        });
       }
-    });
+    ],
+    // optional callback
+    function(err){
+      console.log(err);    
+    });    
+
+  });
+
+  // We need to return 200 even for calls we do not use. 
+  // Kanbanery will eventually disable the live url if you return 404
+  app.post('/liveurl', function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Not Implemented'); 
+  });
+
+  app.delete('/liveurl', function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Not Implemented'); 
+  });  
+
 };
 
 
-// We need to return 200 even for calls we do not use. 
-// Kanbanery will eventually disable the live url if you return 404
-exports.notImplemented = function(req, res){
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Not Implemented'); 
-};
 
 
 

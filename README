@@ -17,11 +17,11 @@ Kanbanery Setup
 
 Todo
 ===
-1. Remove express I think it's over kill and standard http module should work fine
-2. Make work with multiple channels
-3. Write install/readme doc & tests
-4. Optimize nconf loading
-5. Figure out test page
+# Make kanban card lookup work parse url in irc.js
+# Refactor out hardcoded channel in irc.js
+# Make work with multiple channels
+# Write install/readme doc & tests
+
 
 
 Kanbanery Info

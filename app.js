@@ -22,7 +22,7 @@ app.configure(function(){
     app.locals.pretty = true;
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
-    app.use(express.methodOverride());
+    //app.use(express.methodOverride());
     app.use(express.favicon());
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(app.router);
@@ -32,11 +32,8 @@ app.use(express.errorHandler());
 
 // Routes
 app.get('/', routes.index);
-app.put('/liveurl', liveURL.index);
+require('./routes/liveurl')(nconf, app);
 
-// Not Implemented Yet
-app.post('/liveurl', liveURL.notImplemented);
-app.delete('/liveurl', liveURL.notImplemented);
 
 // Start WebServer
 app.listen(app.get('port'), function(){
