@@ -11,7 +11,7 @@ module.exports = function(nconf, app) {
     async.series([
       function(callback) {
         // Authenticate
-        kanbanery.auth(req, nconf, function(err, valid) {
+        kanbanery.auth(req, function(err, valid) {
           if (err || !valid) return callback(err);
           // Send response & process in background
           res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -21,7 +21,7 @@ module.exports = function(nconf, app) {
       },
       function(callback) {
         // Get Column Information  & Post To IRC   
-        kanbanery.get(req.body.resource.column_id, 'columns', nconf, function(err, response) {
+        kanbanery.get(req.body.resource.column_id, 'columns', function(err, response) {
           if (err || !response) {
             console.log('Error fetching column info via API:' + err);
             return callback(err);
@@ -35,7 +35,8 @@ module.exports = function(nconf, app) {
         });
       },
       function(callback) {  
-        kanbanery.getCardCount(req.body.resource.column_id, nconf, function(err,response) {
+        // Determine if WIP is over
+        kanbanery.getCardCount(req.body.resource.column_id, function(err,response) {
           if (err || !response) {
             console.log('Error fetching WIP' + err);
             return callback(err);
