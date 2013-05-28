@@ -17,9 +17,10 @@ Kanbanery Setup
 
 Todo
 ===
-# Make kanban card lookup work parse url in irc.js
+# Make kanban card lookup work parse url in irc.js - done
 # Refactor out hardcoded channel in irc.js
-# Make work with multiple channels
+# Refactor kanbanery.js its a mess
+# Make work with multiple channels -> prob not
 # Write install/readme doc & tests
 
 
@@ -33,35 +34,6 @@ Move: Put
 Edit: Post
 New: Post
 Delete: Delete
-
-Move :
-{ user_id: 'XXX',
-  auth_token: 'XXX',
-  resource: 
-   { id: '952949',
-     created_at: '2013-04-30T20:15:28+00:00',
-     updated_at: '2013-05-19T20:56:28+00:00',
-     weight: '-13000000.0',
-     title: 'Whose On What Board',
-     description: '',
-     task_type_id: '183032',
-     column_id: '227515',
-     creator_id: '33230',
-     owner_id: '33230',
-     priority: '0',
-     ready_to_pull: 'false',
-     moved_at: '2013-05-19T20:56:28+00:00',
-     blocked: 'false',
-     type: 'Task',
-     global_in_context_url: 'https://kanbanery.com/tasks/952949/in-context?project_id=33582',
-     position: '4' } }
-
-
- Column Information:
-
-
-
-Edit: Post
 
 
 
